@@ -1,0 +1,9 @@
+Assigned Tasks
+ Pdf export
+Image uplaod
+Excel data export
+CSV file import
+Date Picker
+Handson Table Implement
+Data Table JQuery
+ 
