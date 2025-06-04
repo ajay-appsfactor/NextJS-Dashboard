@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Dropdown from "../components/Dropdown";
+import Dropdown from "@/app/components/Dropdown";
 
 export default function User() {
   const [users, setUsers] = useState([]);

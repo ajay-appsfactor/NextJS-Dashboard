@@ -2,7 +2,7 @@
 
 import React, {useState, useEffect} from "react";
 import dynamic from "next/dynamic";
-import TableTemplate from "../components/TableTemplate";
+import TableTemplate from "../../components/TableTemplate";
 
 const PDFDownloadLink = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFDownloadLink),

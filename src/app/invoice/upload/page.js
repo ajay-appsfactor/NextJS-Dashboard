@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import Link from "next/link";
 import { useFormik } from "formik";
-import { userProfileSchema } from "../validations/profileSchema";
+import { userProfileSchema } from "../../validations/profileSchema";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoImage } from "react-icons/io5";
