@@ -29,3 +29,47 @@ useCSV: A library which provides a component that handles the entire import proc
             </nav>
         );
     }
+
+
+
+683698da6d9196c6915320e1,"Vijay Kumar","vijay@gmail.com","8077563275","Jamalpur Kalan","2025-05-28T05:02:18.763+00:00","2025-05-29T10:50:13.209+00:00",0
+683698da6d9196c6915320e2,"Anjali Sharma","anjali@gmail.com","9012345678","Sector 21, Noida","2025-05-28T06:15:22.000+00:00","2025-05-29T11:10:00.000+00:00",0
+683698da6d9196c6915320e3,"Ravi Verma","ravi@gmail.com","9811122233","MG Road, Delhi","2025-05-28T07:20:10.000+00:00","2025-05-29T12:00:00.000+00:00",0
+683698da6d9196c6915320e4,"Pooja Rani","pooja@gmail.com","9123456789","Laxmi Nagar","2025-05-28T08:30:45.000+00:00","2025-05-29T13:30:00.000+00:00",0
+683698da6d9196c6915320e5,"Amit Singh","amit@gmail.com","7011122233","Rajiv Chowk","2025-05-28T09:40:22.000+00:00","2025-05-29T14:20:00.000+00:00",0
+683698da6d9196c6915320e6,"Neha Gupta","neha@gmail.com","9312345670","Preet Vihar","2025-05-28T10:50:00.000+00:00","2025-05-29T15:00:00.000+00:00",0
+683698da6d9196c6915320e7,"Suresh Kumar","suresh@gmail.com","9911223344","Palam Vihar","2025-05-28T11:10:00.000+00:00","2025-05-29T15:30:00.000+00:00",0
+683698da6d9196c6915320e8,"Deepa Joshi","deepa@gmail.com","7001122233","Connaught Place","2025-05-28T12:00:00.000+00:00","2025-05-29T16:00:00.000+00:00",0
+683698da6d9196c6915320e9,"Rohan Mehta","rohan@gmail.com","9876543210","Saket, Delhi","2025-05-28T13:00:00.000+00:00","2025-05-29T16:45:00.000+00:00",0
+683698da6d9196c6915320ea,"Kiran Yadav","kiran@gmail.com","8000000001","Dwarka Sec 12","2025-05-28T14:20:00.000+00:00","2025-05-29T17:10:00.000+00:00",0
+
+
+import pandas as pd
+from datetime import datetime
+from io import BytesIO
+
+# Creating dummy data
+data = [
+    {"_id": "683698da6d9196c6915320e1", "name": "Vijay Kumar", "email": "vijay@gmail.com", "phone": "8077563275",
+     "address": "Jamalpur Kalan", "createdAt": "2025-05-28T05:02:18.763+00:00", "updatedAt": "2025-05-29T10:50:13.209+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e2", "name": "Anjali Sharma", "email": "anjali@gmail.com", "phone": "9012345678",
+     "address": "Sector 21, Noida", "createdAt": "2025-05-28T06:15:22.000+00:00", "updatedAt": "2025-05-29T11:10:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e3", "name": "Ravi Verma", "email": "ravi@gmail.com", "phone": "9811122233",
+     "address": "MG Road, Delhi", "createdAt": "2025-05-28T07:20:10.000+00:00", "updatedAt": "2025-05-29T12:00:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e4", "name": "Pooja Rani", "email": "pooja@gmail.com", "phone": "9123456789",
+     "address": "Laxmi Nagar", "createdAt": "2025-05-28T08:30:45.000+00:00", "updatedAt": "2025-05-29T13:30:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e5", "name": "Amit Singh", "email": "amit@gmail.com", "phone": "7011122233",
+     "address": "Rajiv Chowk", "createdAt": "2025-05-28T09:40:22.000+00:00", "updatedAt": "2025-05-29T14:20:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e6", "name": "Neha Gupta", "email": "neha@gmail.com", "phone": "9312345670",
+     "address": "Preet Vihar", "createdAt": "2025-05-28T10:50:00.000+00:00", "updatedAt": "2025-05-29T15:00:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e7", "name": "Suresh Kumar", "email": "suresh@gmail.com", "phone": "9911223344",
+     "address": "Palam Vihar", "createdAt": "2025-05-28T11:10:00.000+00:00", "updatedAt": "2025-05-29T15:30:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e8", "name": "Deepa Joshi", "email": "deepa@gmail.com", "phone": "7001122233",
+     "address": "Connaught Place", "createdAt": "2025-05-28T12:00:00.000+00:00", "updatedAt": "2025-05-29T16:00:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320e9", "name": "Rohan Mehta", "email": "rohan@gmail.com", "phone": "9876543210",
+     "address": "Saket, Delhi", "createdAt": "2025-05-28T13:00:00.000+00:00", "updatedAt": "2025-05-29T16:45:00.000+00:00", "__v": 0},
+    {"_id": "683698da6d9196c6915320ea", "name": "Kiran Yadav", "email": "kiran@gmail.com", "phone": "8000000001",
+     "address": "Dwarka Sec 12", "createdAt": "2025-05-28T14:20:00.000+00:00", "updatedAt": "2025-05-29T17:10:00.000+00:00", "__v": 0},
+]
+
+

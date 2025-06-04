@@ -9,6 +9,10 @@ import {
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineNightlightRound } from "react-icons/md";
 import { LuBell } from "react-icons/lu";
+import { MdFileUpload } from "react-icons/md";
+1;
+import { GrDocumentCsv } from "react-icons/gr";
+
 import Link from "next/link";
 
 import Invoice from "./components/invoice";
@@ -35,9 +39,14 @@ const navItems = [
     path: "/invoice",
   },
   {
-    icon: <FaRegFileAlt />,
+    icon: <MdFileUpload />,
     name: "Upload Image",
     path: "/upload",
+  },
+  {
+    icon: <GrDocumentCsv />,
+    name: "CSV Import",
+    path: "/csv",
   },
 ];
 
