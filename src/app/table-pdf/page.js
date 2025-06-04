@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import dynamic from "next/dynamic";
 import TableTemplate from "../components/TableTemplate";
 
@@ -13,48 +13,17 @@ const PDFDownloadLink = dynamic(
 );
 
 export default function TablePdf() {
-  const data = [
-    {
-      id: 1,
-      name: "Ajay",
-      email: "ajay@gmail.com",
-      phone: 8191041371,
-      address: "Jamalpur Kalan",
-      link: "www.google.com",
-    },
-    {
-      id: 2,
-      name: "Vijay",
-      email: "vijay@gmail.com",
-      phone: 9756336275,
-      address: "Jamalpur Kalan",
-      link: "www.google.com",
-    },
-    {
-      id: 3,
-      name: "Sagar",
-      email: "sagar@gmail.com",
-      phone: 7453664520,
-      address: "Jamalpur Kalan",
-      link: "www.google.com",
-    },
-    {
-      id: 4,
-      name: "Raja",
-      email: "raja@gmail.com",
-      phone: 8453664520,
-      address: "Jamalpur Kalan",
-      link: "www.google.com",
-    },
-    {
-      id: 5,
-      name: "Hanuman",
-      email: "hanuman@gmail.com",
-      phone: 8453664520,
-      address: "Jamalpur Kalan",
-      link: "www.hanuman.com",
-    },
-  ];
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const res = await fetch("/api/admin/get-admin");
+      const data = await res.json();
+      setUsers(data.adminData);
+    }
+    fetchUsers();
+  }, []);
+
   return (
     <div className="p-4">
       <h2 className="text-center mt-5 text-2xl font-semibold text-rose-700">
@@ -73,9 +42,9 @@ export default function TablePdf() {
             </tr>
           </thead>
           <tbody>
-            {data.map((admin) => (
+            {users.map((admin) => (
               <tr
-                key={admin.id}
+                key={admin._id}
                 className="border-t odd:bg-white even:bg-gray-100"
               >
                 <td className="p-3 text-sm">{admin.name}</td>
@@ -91,7 +60,7 @@ export default function TablePdf() {
       {/* Pdf Download Button */}
       <div className="mt-6 flex justify-center">
         <PDFDownloadLink
-          document={<TableTemplate data={data} />}
+          document={<TableTemplate data={users} />}
           fileName={`table-${Date.now()}.pdf`}
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
         >

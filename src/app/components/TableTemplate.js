@@ -45,29 +45,27 @@ const styles = StyleSheet.create({
 
 export default function TableTemplate({ data }) {
   return (
-    <PDFViewer width="100%" height="100%">
-      <Document>
-        <Page size="A4" style={styles.page}>
-          <Text style={styles.title}>Admin Table</Text>
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <Text style={styles.title}>Admin Table</Text>
 
-          <View style={styles.table}>
-            <View style={[styles.row, styles.header]}>
-              <Text style={styles.col}>Name</Text>
-              <Text style={styles.col}>Email</Text>
-              <Text style={styles.col}>Phone</Text>
-              <Text style={styles.col}>Address</Text>
-            </View>
-            {data.map((item, i) => (
-              <View style={styles.row} key={i}>
-                <Text style={styles.col}>{item.name}</Text>
-                <Text style={styles.col}>{item.email}</Text>
-                <Text style={styles.col}>{item.phone}</Text>
-                <Text style={styles.col}>{item.address}</Text>
-              </View>
-            ))}
+        <View style={styles.table}>
+          <View style={[styles.row, styles.header]}>
+            <Text style={styles.col}>Name</Text>
+            <Text style={styles.col}>Email</Text>
+            <Text style={styles.col}>Phone</Text>
+            <Text style={styles.col}>Address</Text>
           </View>
-        </Page>
-      </Document>
-    </PDFViewer>
+          {data.map((item, i) => (
+            <View style={styles.row} key={i}>
+              <Text style={styles.col}>{item.name}</Text>
+              <Text style={styles.col}>{item.email}</Text>
+              <Text style={styles.col}>{item.phone}</Text>
+              <Text style={styles.col}>{item.address}</Text>
+            </View>
+          ))}
+        </View>
+      </Page>
+    </Document>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-
+import { Suspense } from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Dropdown from "../components/Dropdown";
@@ -22,35 +22,37 @@ export default function User() {
         User Accounts
       </h3>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {users.map((user) => (
-          <div
-            key={user._id}
-            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 text-center"
-          >
-            <div className="w-24 h-24 mx-auto mb-4">
-              <Image
-                src={user.image}
-                priority
-                width={96}
-                height={96}
-                alt={user.name}
-                className="rounded-full object-cover w-full h-full border-0 cursor-pointer transition duration-700 ease-in-out border-gray-300 hover:-translate-y-1"
-                draggable="false"
-              />
+      <Suspense fallback={<div>Loading Profile...</div>}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {users.map((user) => (
+            <div
+              key={user._id}
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 text-center"
+            >
+              <div className="w-24 h-24 mx-auto mb-4">
+                <Image
+                  src={user.image}
+                  priority
+                  width={96}
+                  height={96}
+                  alt={user.name}
+                  className="rounded-full object-cover w-full h-full border-0 cursor-pointer transition duration-700 ease-in-out border-gray-300 hover:-translate-y-1"
+                  draggable="false"
+                />
+              </div>
+              <h2 className="text-lg font-semibold text-gray-800">
+                {user.name}
+              </h2>
+              <p className="text-sm text-gray-600">{user.email}</p>
             </div>
-            <h2 className="text-lg font-semibold text-gray-800">{user.name}</h2>
-            <p className="text-sm text-gray-600">{user.email}</p>
-          </div>
-        ))}
-      </div>
-
+          ))}
+        </div>
+      </Suspense>
 
       {/* Dropdown list  */}
       <div className="flex justify-center mt-8 mx-auto">
-            <Dropdown />
+        <Dropdown />
       </div>
-  
     </div>
   );
 }
