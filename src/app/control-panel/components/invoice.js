@@ -1,15 +1,5 @@
-npm install react-csv-reader
-npm install xlsx file-saver
-
-npm install papaparse
-useCSV: A library which provides a component that handles the entire import process.
-{product.description.slice(0, 20)} ...
-
-
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Filter, ExternalLink } from "lucide-react";
 import * as XLSX from "xlsx";
@@ -31,9 +21,22 @@ export default function Invoice() {
     fetchData();
   }, []);
 
-  const exportToExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(users);
+  const exportToExcel = async () => {
+    const res = await fetch("https://dummyjson.com/users");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await res.json();
+    const dataToExport = data.users.map((pro) => ({
+      Id: pro.id,
+      Name: pro.username,
+      Email: pro.email,
+      Gender: pro.gender,
+      DOB: pro.birthDate,
+    }));
+
     const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.json_to_sheet(dataToExport);
     XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
 
     const excelBuffer = XLSX.write(workbook, {
@@ -42,8 +45,7 @@ export default function Invoice() {
     });
 
     const blob = new Blob([excelBuffer], {
-      type:
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
     });
 
     saveAs(blob, "user_data.xlsx");
@@ -51,7 +53,7 @@ export default function Invoice() {
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
-      <h3 className="text-center text-xl font-bold text-rose-700 mb-10">
+      <h3 className="text-center text-xl font-bold text-rose-700 mb-10 antialiased ">
         Invoice Data
       </h3>
 
@@ -61,7 +63,7 @@ export default function Invoice() {
           className="flex items-center text-sm font-medium border border-purple-700 text-purple-700 px-5 py-2 rounded hover:bg-purple-50 transition"
         >
           <ExternalLink className="w-4 h-4 mr-2" />
-          Export
+          Export Excel
         </button>
         <button className="flex items-center text-sm font-medium text-white bg-orange-700 px-5 py-2 rounded hover:bg-orange-800 transition">
           <Filter className="w-4 h-4 mr-2" />

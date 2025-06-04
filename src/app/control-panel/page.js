@@ -11,6 +11,8 @@ import { MdOutlineNightlightRound } from "react-icons/md";
 import { LuBell } from "react-icons/lu";
 import Link from "next/link";
 
+import Invoice from "./components/invoice";
+
 const navItems = [
   {
     icon: <FaHome />,
@@ -32,12 +34,17 @@ const navItems = [
     name: "Invoice",
     path: "/invoice",
   },
+  {
+    icon: <FaRegFileAlt />,
+    name: "Upload Image",
+    path: "/upload",
+  },
 ];
 
 export default function ControlPanel() {
   return (
     <div className="flex">
-      <div className="w-1/4 bg-gray-100">
+      <div className="w-1/5 bg-gray-100">
         <div className="flex justify-start">
           <div>
             <Image
@@ -67,44 +74,44 @@ export default function ControlPanel() {
       </div>
 
       {/* Right side  */}
-      <div className="w-3/4 flex justify-evenly items-center">
-        <div className="flex ">
-          <div>
-            <button className="p-3 border border-gray-100">
-              <FaAlignLeft />
-            </button>
-          </div>
-          <div className="relative">
-            <div className="absolute top-3 ps-4 flex items-center pointer-events-none">
-              <IoSearchOutline className="w-4 h-4 text-gray-500" />
+      <div className="w-3/4 ">
+        <div className="flex justify-evenly items-center">
+          <div className="flex ">
+            <div>
+              <button className="p-3 border border-gray-100">
+                <FaAlignLeft />
+              </button>
             </div>
-            <input
-              type="text"
-              className="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 outline-none"
-              placeholder="Search or type command..."
-            />
+            <div className="relative">
+              <div className="absolute top-3 ps-4 flex items-center pointer-events-none">
+                <IoSearchOutline className="w-4 h-4 text-gray-500" />
+              </div>
+              <input
+                type="text"
+                className="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                placeholder="Search or type command..."
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-center items-center gap-4">
+            <div className="p-3 rounded-full bg-white  hover:bg-gray-200 cursor-pointer">
+              <MdOutlineNightlightRound />
+            </div>
+            <div className="p-3 rounded-full bg-white  hover:bg-gray-200 cursor-pointer">
+              <LuBell />
+            </div>
+            <div className="p-3 rounded-full object-cover cursor-pointer">
+              <Image src="/user.avif" width={30} height={30} alt="user" />
+            </div>
+            <div className="p-3 rounded-full bg-white  hover:bg-gray-200 cursor-pointer">
+              <MdOutlineNightlightRound />
+            </div>
           </div>
         </div>
 
-
-        <div className="flex justify-center items-center gap-4">
-          <div className="p-3 rounded-full bg-white  hover:bg-gray-200 cursor-pointer">
-            <MdOutlineNightlightRound />
-          </div>
-          <div className="p-3 rounded-full bg-white  hover:bg-gray-200 cursor-pointer">
-            <LuBell />
-          </div>
-          <div className="p-3 rounded-full object-cover cursor-pointer">
-            <Image
-              src="/user.avif"
-              width={30}
-              height={30}
-              alt="user"
-            />
-          </div>
-          <div className="p-3 rounded-full bg-white  hover:bg-gray-200 cursor-pointer">
-            <MdOutlineNightlightRound />
-          </div>
+        <div>
+          <Invoice />
         </div>
       </div>
     </div>

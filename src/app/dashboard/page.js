@@ -31,8 +31,7 @@ export default function Home() {
               Sales Dashboard
             </span>
           </div>
-        </div>
-
+        </div>{" "}
         <div className="flex items-center gap-3">
           <button className="flex items-center text-sm font-medium border border-purple-700 text-purple-700 px-5 py-2 rounded hover:bg-purple-50 transition">
             <ExternalLink className="w-4 h-4 mr-2" />
