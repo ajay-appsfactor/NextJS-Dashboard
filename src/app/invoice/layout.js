@@ -1,10 +1,10 @@
-import Sidebar from "../control-panel/components/Siderbar";
+import Siderbar from "../control-panel/components/Siderbar";
 
 export default function Layout({ children }) {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <Sidebar />
+      <Siderbar />
 
       {/* Main content */}
       <div className="flex flex-col flex-1 overflow-hidden">

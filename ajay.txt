@@ -73,3 +73,4 @@ data = [
 ]
 
 
+<IoIosArrowDropdown className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />

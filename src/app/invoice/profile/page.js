@@ -2,7 +2,6 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Dropdown from "@/app/components/Dropdown";
 
 export default function User() {
   const [users, setUsers] = useState([]);
@@ -48,11 +47,6 @@ export default function User() {
           ))}
         </div>
       </Suspense>
-
-      {/* Dropdown list  */}
-      <div className="flex justify-center mt-8 mx-auto">
-        <Dropdown />
-      </div>
     </div>
   );
 }
