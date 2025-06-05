@@ -1,8 +1,10 @@
 npm install react-csv-reader
 npm install xlsx file-saver
-
+npm install react-modal
 npm install papaparse
 useCSV: A library which provides a component that handles the entire import process.
+
+modal vs dialog box
 {product.description.slice(0, 20)} ...
 
 
@@ -74,3 +76,71 @@ data = [
 
 
 <IoIosArrowDropdown className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+
+
+"use client";
+
+import React, { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+
+const faqs = [
+  {
+    question: "Do I get free updates?",
+    answer:
+      "Yes, all updates are free for the lifetime of the product. You'll receive them automatically.",
+  },
+  {
+    question: "How can I contact support?",
+    answer:
+      "You can contact support via our contact form or by emailing support@example.com.",
+  },
+];
+
+const FaqPage = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="p-6 max-w-2xl mx-auto">
+      <h2 className="text-center text-3xl font-extrabold text-gray-800 mb-8">
+        Frequently Asked Questions
+      </h2>
+
+      <div className="space-y-4">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className="border border-gray-300 rounded-2xl shadow-sm transition-all"
+          >
+            <button
+              onClick={() => toggleAccordion(index)}
+              className="w-full flex justify-between items-center p-5 bg-white hover:bg-gray-50 rounded-2xl transition-colors duration-200"
+            >
+              <span className="text-lg font-medium text-gray-900">
+                {faq.question}
+              </span>
+              <FaChevronDown
+                className={`text-gray-500 transition-transform duration-300 ${
+                  openIndex === index ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`overflow-hidden transition-all duration-300 px-5 ${
+                openIndex === index ? "max-h-40 py-3" : "max-h-0"
+              }`}
+            >
+              <p className="text-gray-700">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FaqPage;

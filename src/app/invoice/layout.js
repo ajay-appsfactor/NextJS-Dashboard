@@ -10,16 +10,10 @@ export default function Layout({ children }) {
       </div>
 
       {/* Main content */}
-      {/* <div className="flex flex-col flex-1"> */}
-      {/* Top Navbar */}
-      {/* <Topbar /> */}
-
-      {/* Page Content */}
-      <main className="flex-grow p-3 md:p-6">
+      <main className="flex flex-col flex-grow overflow-y-auto">
         <Topbar />
         {children}
       </main>
-      {/* </div> */}
     </div>
   );
 }

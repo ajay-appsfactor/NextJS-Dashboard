@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       {/* Main content */}
       <div className="flex flex-col flex-1 overflow-hidden">
         {/* Top Navbar */}
-        <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
+        <header className="flex items-center justify-between px-3 py-2 bg-gray-300 border-b border-gray-200">
           <h1 className="text-xl font-semibold text-gray-800">Dashboard</h1>
           <div className="flex items-center space-x-4">
             <span className="text-sm text-gray-600">Welcome, User</span>
@@ -22,7 +22,7 @@ export default function Layout({ children }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto">
           {children}
         </main>
       </div>
