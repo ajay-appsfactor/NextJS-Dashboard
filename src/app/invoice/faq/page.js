@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 const faqs = [
   {
@@ -35,14 +35,14 @@ const FaqPage = () => {
             className="border border-gray-300 rounded-2xl shadow-sm transition-all"
           >
             <button
-              className="w-full flex justify-between items-center p-5 bg-white hover:bg-gray-50 rounded-2xl transition-colors duration-200"
+              className="w-full flex justify-between items-center px-4 py-2 bg-white hover:bg-gray-50 rounded-2xl transition-colors duration-200 text-gray-500 border border-b-0 border-gray-200"
               onClick={() => toggleAccordion(index)}
             >
-              <span className="text-lg font-medium text-gray-800 ">
+              <span className="text-lg font-medium text-gray-800">
                 {faq.question}
               </span>
               <span className="text-gray-600 bg-gray-100 rounded-full p-5">
-                <FaChevronUp
+                <FaChevronDown
                   className={`transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
                   }`}
@@ -50,7 +50,7 @@ const FaqPage = () => {
               </span>
             </button>
             {openIndex === index && (
-              <div className="px-4 pb-4 text-gray-700">{faq.answer}</div>
+              <div className="px-4 pb-4 mt-4 text-gray-700">{faq.answer}</div>
             )}
           </div>
         ))}

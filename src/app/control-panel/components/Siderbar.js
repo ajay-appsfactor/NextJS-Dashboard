@@ -25,7 +25,7 @@ function NavLink({ href, children }) {
 
 export default function Siderbar() {
   return (
-    <div className="h-full bg-gray-800 text-white p-5">
+    <div className="h-full bg-gray-800 text-white p-5 scroll-smooth overflow-y-auto">
       <h2 className="text-2xl font-bold mb-8">Dashboard</h2>
       <nav className="flex flex-col gap-4">
         <NavLink href="/invoice/home">Home</NavLink>
