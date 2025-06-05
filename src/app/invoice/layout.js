@@ -1,31 +1,25 @@
 import Siderbar from "../control-panel/components/Siderbar";
+import Topbar from "../control-panel/components/Topbar";
 
 export default function Layout({ children }) {
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <Siderbar />
+    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+      <div className="w-full flex-none md:w-64">
+        {/* Sidebar */}
+        <Siderbar />
+      </div>
 
       {/* Main content */}
-      <div className="flex flex-col flex-1 overflow-hidden">
-        {/* Top Navbar */}
-        <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
-          <h1 className="text-xl font-semibold text-gray-800">Dashboard</h1>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-600">Welcome, User</span>
-            <img
-              className="w-8 h-8 rounded-full"
-              src="https://i.pravatar.cc/300"
-              alt="User Avatar"
-            />
-          </div>
-        </header>
+      {/* <div className="flex flex-col flex-1"> */}
+      {/* Top Navbar */}
+      {/* <Topbar /> */}
 
-        {/* Page Content */}
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
-        </main>
-      </div>
+      {/* Page Content */}
+      <main className="flex-grow p-3 md:p-6">
+        <Topbar />
+        {children}
+      </main>
+      {/* </div> */}
     </div>
   );
 }
