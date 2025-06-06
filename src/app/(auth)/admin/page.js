@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AdminTable from "../components/AdminTable";
+import AdminTable from "../../components/AdminTable";
 
 
 export default async function Admin() {
@@ -12,10 +12,10 @@ export default async function Admin() {
   });
 
   const { adminData } = await res.json();
-  console.log(adminData);
+  // console.log(adminData);
 
   const adminDelete = async (id) => {
-    console.log("Button clicked!", id);
+    // console.log("Button clicked!", id);
     try {
       await fetch(`http://localhost:3000/api/admin/${id}`, {
         method: "DELETE",
