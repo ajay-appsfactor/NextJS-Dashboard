@@ -13,9 +13,7 @@ function NavLink({ href, children }) {
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={`px-3 py-2 rounded font-semibold ${
-        isActive
-          ? "text-blue-800 bg-blue-200"
-          : "text-white hover:bg-gray-700"
+        isActive ? "text-blue-800 bg-blue-200" : "text-white hover:bg-gray-700"
       }`}
     >
       {children}
@@ -37,6 +35,7 @@ export default function Siderbar() {
         <NavLink href="/invoice/csv">CSV File</NavLink>
         <NavLink href="/invoice/date">Date Picker</NavLink>
         <NavLink href="/invoice/faq">FAQs</NavLink>
+        <NavLink href="/invoice/product">Product</NavLink>
         <Dropdown />
       </nav>
     </div>

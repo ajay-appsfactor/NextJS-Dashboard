@@ -1,10 +1,10 @@
-import Sidebar from "../control-panel/components/Siderbar";
+// import Sidebar from "../control-panel/components/Siderbar";
 
 const Page = () => {
   return (
     <>
       <div className="flex">
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         {/* Main Content */}
         <div className="ml-64 flex-1 p-8">

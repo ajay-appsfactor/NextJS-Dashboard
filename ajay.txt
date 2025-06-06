@@ -144,3 +144,55 @@ const FaqPage = () => {
 };
 
 export default FaqPage;
+
+
+import React, { ButtonHTMLAttributes, ReactNode } from "react";
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: ReactNode;
+  variant?: "primary" | "secondary";
+  className?: string;
+};
+
+export default function Button({
+  children,
+  variant = "primary",
+  className = "",
+  ...props
+}: ButtonProps) {
+  const baseStyles =
+    "px-4 py-2 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition";
+
+  const variantStyles = {
+    primary:
+      "bg-pink-600 text-white hover:bg-pink-700 focus:ring-pink-500",
+    secondary:
+      "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-400",
+  };
+
+  return (
+    <button
+      className={`${baseStyles} ${variantStyles[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
+
+import Button from "@/ui/Button";
+
+export default function Demo() {
+  return (
+    <div>
+      <Button variant="primary" onClick={() => alert("Clicked!")}>
+        Primary Button
+      </Button>
+
+      <Button variant="secondary" className="ml-4">
+        Secondary Button
+      </Button>
+    </div>
+  );
+}
